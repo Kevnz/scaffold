@@ -1,0 +1,163 @@
+version: 2.1
+executors:
+  node:
+    docker:
+      - image: circleci/node:12-browsers
+    working_directory: ~/watcher
+  build-machine:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/watcher
+
+  big-machine:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/watcher
+
+  super-machine:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/watcher
+
+  giant-machine:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/watcher
+
+  exec-defaults:
+    docker:
+      - image: circleci/node:12-browsers
+    working_directory: ~/watcher
+
+jobs:
+  build:
+    executor: node
+
+    working_directory: ~/watcher
+
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+  test:
+    executor: node
+
+    working_directory: ~/watcher
+
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+
+  buildAgain:
+    executor: big-machine
+
+    working_directory: ~/watcher
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+
+  builder:
+    executor: super-machine
+
+    working_directory: ~/watcher
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+  worker:
+    executor: giant-machine
+
+    working_directory: ~/watcher
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: rm -rf node_modules
+      - run: rm -r build
+      - checkout
+      - run: npm install
+      - run: npm run build
+
+workflows:
+  version: 2
+  hourly:
+    triggers:
+      - schedule:
+          cron: "0 * * * *"
+          filters:
+            branches:
+              only:
+                - "master"
+                - "update"
+    jobs:
+      - "test"
+      - "build"
+      - "test"
+      - "buildAgain"
+      - "builder"
+      - "worker"
+  build:
+    jobs:
+      - "test"
+      - "build"
+      - "buildAgain"
+      - "builder"
+      - "worker"
