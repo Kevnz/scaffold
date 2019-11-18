@@ -3,37 +3,37 @@ executors:
   node:
     docker:
       - image: circleci/node:12-browsers
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
   build-machine:
     docker:
       - image: circleci/node:12
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
   big-machine:
     docker:
       - image: circleci/node:12
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
   super-machine:
     docker:
       - image: circleci/node:10
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
   giant-machine:
     docker:
       - image: circleci/node:12
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
   exec-defaults:
     docker:
       - image: circleci/node:12-browsers
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
 jobs:
   build:
     executor: node
 
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
     steps:
       - checkout
@@ -42,7 +42,7 @@ jobs:
   test:
     executor: node
 
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
 
     steps:
       - checkout
@@ -53,28 +53,28 @@ jobs:
   buildAgain:
     executor: big-machine
 
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
     steps:
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
@@ -82,56 +82,56 @@ jobs:
   builder:
     executor: super-machine
 
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
     steps:
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
   worker:
     executor: giant-machine
 
-    working_directory: ~/watcher
+    working_directory: ~/scaffold
     steps:
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
       - run: rm -rf node_modules
-      - run: rm -r build
+      - run: rm -r dist
       - checkout
       - run: npm install
       - run: npm run build
