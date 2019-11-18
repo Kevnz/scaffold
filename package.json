@@ -14,7 +14,6 @@
     "@brightleaf/react-hooks": "^4.1.1",
     "@kev_nz/async-tools": "^1.2.3",
     "@reach/router": "^1.2.1",
-    "back-off": "^4.2.0",
     "classnames": "^2.2.6",
     "creature-features": "^5.0.0",
     "react": "^16.12.0",
