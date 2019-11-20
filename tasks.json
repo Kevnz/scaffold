@@ -5,5 +5,10 @@
   "build": "npx webpack --config ./src/webpack/prod.config.js --mode production",
   "dev": [
     "npx webpack-dev-server --config ./src/webpack/dev.config.js --mode development"
-  ]
+  ],
+  "dev:int": [
+    "npx webpack-dev-server --config ./src/webpack/int.config.js --mode development"
+  ],
+  "test:integration": "npx jest -c ./src/integration/jest.config.js",
+  "test:integrationWithWatch": "jest -c ./src/integration/jest.config.js --watch"
 }

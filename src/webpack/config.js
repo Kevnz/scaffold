@@ -1,5 +1,9 @@
+const fs = require('fs')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const babelrc = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../../.babelrc'))
+)
 
 module.exports = {
   entry: './src/ui/index.js',
@@ -8,7 +12,10 @@ module.exports = {
       {
         test: /\.(mjs|js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: babelrc,
+        },
       },
       {
         test: /\.css$/,

@@ -39,6 +39,8 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run build
+      - run: npm run test:integration
+
   test:
     executor: node
 

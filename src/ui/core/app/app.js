@@ -8,6 +8,7 @@ import './app.scss'
 const About = React.lazy(() => import('ui/features/about'))
 const Home = React.lazy(() => import('ui/features/home'))
 const Contact = React.lazy(() => import('ui/features/contact'))
+const BackOff = React.lazy(() => import('ui/features/back-off'))
 
 export default () => {
   return (
@@ -15,7 +16,7 @@ export default () => {
       <AppProvider>
         <NavBar isPrimary isFixedTop className="is-radiusless">
           <NavBarBrand
-            src="/favicon-32x32-invert.png"
+            src="/favicon-32x32.png"
             href="/"
             target="navTarget"
             width="32"
@@ -28,6 +29,7 @@ export default () => {
               <Home path="/" />
               <About path="/about" />
               <Contact path="/contact" />
+              <BackOff path="/backoff" />
             </Router>
           </React.Suspense>
         </Section>
