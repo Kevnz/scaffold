@@ -13,7 +13,7 @@
     "watch:int": "jest -c ./src/integration/jest.config.js --watch"
   },
   "dependencies": {
-    "@brightleaf/elements": "^1.5.0",
+    "@brightleaf/elements": "^1.6.0",
     "@brightleaf/react-hooks": "^4.1.1",
     "@kev_nz/async-tools": "^1.2.3",
     "@reach/router": "^1.2.1",
