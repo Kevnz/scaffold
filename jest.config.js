@@ -3,6 +3,7 @@ module.exports = {
   transform: {
     '^.+\\.js?$': 'babel-jest',
   },
+  testRegex: './*\\.spec\\.js$',
   moduleNameMapper: {
     '\\.(css|less)$': 'identity-obj-proxy',
   },

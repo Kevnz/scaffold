@@ -1,39 +1,66 @@
-import React from 'react'
-import { Form, TextArea, TextBox } from 'react-form-elements'
-import { usePost } from '@brightleaf/react-hooks'
-const ContactForm = () => {
-  const { data, error, loading, postData } = usePost()
-  return (
-    <main>
-      <section>
-        <h2>Contact</h2>
-        <div>
-          <Form
-            onSubmit={values => {
-              console.log('Name', values.userName)
-              console.log('Email', values.userEmail)
-              console.log('Message', values.message)
-              postData(values)
-            }}
-          >
-            <TextBox
-              name="userName"
-              label="Your Name"
-              initialValue=""
-            />
-            <TextBox
-              type="email"
-              name="userEmail"
-              label="Your Email"
-              initialValue=""
-            />
-            <TextArea label="Your Message" name="message" />
+import React, { useRef, useState } from 'react'
+import { TextArea, TextBox, Hidden, Form } from 'react-form-elements'
+import { Section, Title, ConfirmButton } from '@brightleaf/elements'
 
-            <button>Send</button>
-          </Form>
-        </div>
-      </section>
-    </main>
+const ContactForm = () => {
+  const formRef = useRef()
+  const [formVals, setFormVals] = useState({
+    userName: '',
+    email: '',
+    message: '',
+  })
+  return (
+    <Section>
+      <Title>Contact</Title>
+
+      <Form
+        name="contact"
+        onSubmit={values => {
+          console.log('The form onform submit', values)
+          setFormVals(values)
+        }}
+        ref={formRef}
+      >
+        <TextBox
+          name="userName"
+          label="Your Name"
+          initialValue=""
+          className="field control"
+          labelClassName="label"
+          inputClassName="input"
+        />
+        <TextBox
+          type="email"
+          name="userEmail"
+          label="Your Email"
+          initialValue=""
+          className="field control"
+          labelClassName="label"
+          inputClassName="input"
+        />
+        <TextArea
+          label="Your Message"
+          name="message"
+          className="field control"
+          labelClassName="label"
+          inputClassName="textarea"
+        />
+        <Hidden name="form-name" initialValue="contact" />
+
+        <ConfirmButton
+          title="Please Confirm"
+          question="Are you sure you want to send the message?"
+          onConfirm={e => {
+            formRef.current.submit()
+          }}
+          onCancel={() => {
+            formRef.current.reset()
+          }}
+        >
+          Send
+        </ConfirmButton>
+      </Form>
+    </Section>
   )
 }
 
