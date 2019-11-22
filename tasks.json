@@ -20,6 +20,5 @@
   "tests": [
     "npx isom test:integration",
     "npx isom test:cuke"
-  ],
-  "cleanuptests": "killall node"
+  ]
 }
