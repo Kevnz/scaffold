@@ -10,7 +10,8 @@
     "dev": "isom dev",
     "dev:int": "isom dev:int",
     "test:integration": "jest -c ./src/integration/jest.config.js",
-    "watch:int": "jest -c ./src/integration/jest.config.js --watch"
+    "watch:int": "jest -c ./src/integration/jest.config.js --watch",
+    "test:cukes": "isom test:cuke"
   },
   "dependencies": {
     "@brightleaf/elements": "^1.6.0",
@@ -47,6 +48,7 @@
     "copy-webpack-plugin": "^5.0.5",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
+    "cucumber": "^6.0.5",
     "eslint": "^6.6.0",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
@@ -59,6 +61,7 @@
     "react-hot-loader": "^4.12.18",
     "resolve-url-loader": "^3.1.1",
     "sass-loader": "^8.0.0",
+    "static-cling": "^2.0.3",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",

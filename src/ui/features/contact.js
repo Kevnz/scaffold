@@ -12,7 +12,7 @@ const ContactForm = () => {
   return (
     <Section>
       <Title>Contact</Title>
-
+      {formVals}
       <Form
         name="contact"
         onSubmit={values => {

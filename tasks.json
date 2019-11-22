@@ -10,5 +10,16 @@
     "npx webpack-dev-server --config ./src/webpack/int.config.js --mode development"
   ],
   "test:integration": "npx jest -c ./src/integration/jest.config.js",
-  "test:integrationWithWatch": "jest -c ./src/integration/jest.config.js --watch"
+  "test:integrationWithWatch": "jest -c ./src/integration/jest.config.js --watch",
+  "test:cuke": "npx cucumber-js ./src/features/**.feature",
+  "serve": "node ./src/scripts/serve.js &",
+  "pretests": [
+    "npx isom build",
+    "npx isom serve"
+  ],
+  "tests": [
+    "npx isom test:integration",
+    "npx isom test:cuke"
+  ],
+  "cleanuptests": "killall node"
 }

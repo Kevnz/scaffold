@@ -27,6 +27,7 @@ const devConfig = {
     historyApiFallback: true,
     contentBase: './src/public',
     hot: true,
+    port: 8084,
   },
 }
 
