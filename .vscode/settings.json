@@ -5,17 +5,20 @@
     "editor.formatOnSave": false
   },
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#61dafb",
-    "titleBar.inactiveBackground": "#61dafb",
+    "titleBar.activeBackground": "#4ac5e7b4",
+    "titleBar.inactiveBackground": "#4ac5e7b4",
     "titleBar.activeForeground": "#ffffff",
     "titleBar.inactiveForeground": "#FFFFFFCC",
     "titleBar.border": "#33373f",
-    "activityBar.foreground": "#61dafb",
+    "activityBar.foreground": "#4ac5e7b4",
     "activityBar.background": "#33373f",
     "activityBarBadge.foreground": "#fff",
-    "tab.activeBorder": "#61dafb",
-    "tab.activeBorderTop": "#61dafb",
-    "tab.activeBackground": "#42464d"
+    "tab.activeBorder": "#4ac5e7b4",
+    "tab.activeBorderTop": "#4ac5e7b4",
+    "tab.activeBackground": "#42464d",
+    "statusBar.background": "#4ac5e7b4",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.border": "#33373f"
   },
   "vsicons.presets.jsOfficial": true,
   "vsicons.presets.jsonOfficial": true,
