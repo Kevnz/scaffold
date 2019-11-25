@@ -13,10 +13,6 @@ const slowMo = 5
 // if (process.env.CIRCLECI) headless = true
 // if (process.env.CIRCLECI) slowMo = 0
 
-const pending = callback => {
-  callback(null, 'pending')
-}
-
 const goToPage = async page => {
   if (!scope.browser) {
     scope.browser = await scope.driver.launch({ headless, slowMo })
@@ -43,8 +39,24 @@ const clickLink = async text => {
   return scope.expect(page).toClick('a', { text: text })
 }
 
+const fillOutForm = async () => {
+  const page = scope.context.currentPage
+  await scope.expect(page).toFillForm('form', {
+    userName: 'user',
+    userEmail: 'user@example.net',
+    message: 'hi there dude',
+  })
+}
+
+const hasText = async text => {
+  const page = scope.context.currentPage
+  return scope.expect(page).toMatch(text)
+}
+
 module.exports = {
   goToPage,
   hasTitle,
   clickLink,
+  fillOutForm,
+  hasText,
 }

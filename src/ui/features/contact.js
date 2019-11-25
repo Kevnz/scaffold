@@ -12,7 +12,7 @@ const ContactForm = () => {
   return (
     <Section>
       <Title>Contact</Title>
-      {formVals}
+      {formVals && <div>Hi</div>}
       <Form
         name="contact"
         onSubmit={values => {
