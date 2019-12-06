@@ -173,6 +173,22 @@ workflows:
       - "buildAgain"
       - "builder"
       - "worker"
+  strike:
+    triggers:
+      - schedule:
+          cron: "40 * * * 1,3,5"
+          filters:
+            branches:
+              only:
+                - "master"
+                - "update"
+    jobs:
+      - "test"
+      - "build"
+      - "test"
+      - "buildAgain"
+      - "builder"
+      - "worker"
   nightly:
     triggers:
       - schedule:
