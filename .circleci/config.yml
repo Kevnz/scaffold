@@ -144,7 +144,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "10 * * * *"
+          cron: "10 * * * 1-5"
           filters:
             branches:
               only:
@@ -204,6 +204,22 @@ workflows:
       - "buildAgain"
       - "builder"
       - "worker"
+  fuller:
+    triggers:
+      - schedule:
+          cron: "40 * * * *"
+          filters:
+            branches:
+              only:
+                - "master"
+    jobs:
+      - "test"
+      - "build"
+      - "test"
+      - "buildAgain"
+      - "builder"
+      - "worker"
+
   build:
     jobs:
       - "test"
