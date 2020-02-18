@@ -5,7 +5,9 @@ describe('app', () => {
   })
 
   it('should display Make Things', async () => {
+    await delay(3000)
     await expect(page).toMatch('Make Things')
+    console.log('done')
   })
   it('should go to back-off page and test', async () => {
     await expect(page).toClick('a', { text: 'Back Off' })
